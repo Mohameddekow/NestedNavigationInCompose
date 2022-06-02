@@ -1,4 +1,4 @@
-package com.example.nestednavigationincompose
+package com.example.nestednavigationincompose.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -13,9 +13,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.nestednavigationincompose.Screen
 
 @Composable
-fun HomeScreen(
+fun DetailScreen(
     navController: NavController
 ) {
     Box(
@@ -24,12 +25,16 @@ fun HomeScreen(
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = "Home",
+            text = "Details",
             modifier = Modifier
                 .clickable {
-                    navController.navigate(route = Screen.DetailScreen.passId(4))
+                    navController.navigate(Screen.HomeScreen.route) {
+                        popUpTo(Screen.HomeScreen.route) {
+                            inclusive = true
+                        }
+                    }
                 },
-            color = Color.Blue,
+            color = Color.Red,
             fontSize = MaterialTheme.typography.h3.fontSize,
             fontWeight = FontWeight.Bold
         )
@@ -39,6 +44,6 @@ fun HomeScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun HomeScreenPre() {
-    HomeScreen(navController = rememberNavController())
+fun DetailScreenPre() {
+    DetailScreen(navController = rememberNavController())
 }

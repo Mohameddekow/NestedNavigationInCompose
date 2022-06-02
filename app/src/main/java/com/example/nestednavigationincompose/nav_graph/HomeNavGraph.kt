@@ -1,26 +1,27 @@
-package com.example.nestednavigationincompose
+package com.example.nestednavigationincompose.nav_graph
 
 import android.util.Log
-import androidx.compose.runtime.Composable
-import androidx.navigation.NavHostController
-import androidx.navigation.NavType
-import androidx.navigation.compose.NavHost
+import androidx.navigation.*
 import androidx.navigation.compose.composable
-import androidx.navigation.navArgument
+import com.example.nestednavigationincompose.DETAIL_SCREEN_ID
+import com.example.nestednavigationincompose.HOME_ROUTE
+import com.example.nestednavigationincompose.Screen
+import com.example.nestednavigationincompose.screens.DetailScreen
+import com.example.nestednavigationincompose.screens.HomeScreen
 
-@Composable
-fun SetUpNavGraph(
+fun NavGraphBuilder.homeNavGraph(
     navHostController: NavHostController
 ) {
-    NavHost(
-        navController = navHostController,
-        startDestination = Screen.HomeScreen.route
+    navigation(
+        startDestination = Screen.HomeScreen.route,
+        route = HOME_ROUTE
     ) {
         composable(
             route = Screen.HomeScreen.route
         ) {
             HomeScreen(navHostController)
         }
+
         composable(
             route = Screen.DetailScreen.route,
             arguments = listOf(navArgument(DETAIL_SCREEN_ID) {
@@ -31,4 +32,6 @@ fun SetUpNavGraph(
             DetailScreen(navController = navHostController)
         }
     }
+
+
 }

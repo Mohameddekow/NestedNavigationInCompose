@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.nestednavigationincompose.nav_graph.SetUpNavGraph
 import com.example.nestednavigationincompose.ui.theme.NestedNavigationInComposeTheme
 
 class MainActivity : ComponentActivity() {
