@@ -27,7 +27,7 @@ fun HomeScreen(
             text = "Home",
             modifier = Modifier
                 .clickable {
-                    navController.navigate(Screen.DetailScreen.route)
+                    navController.navigate(route = Screen.DetailScreen.passId(4))
                 },
             color = Color.Blue,
             fontSize = MaterialTheme.typography.h3.fontSize,
